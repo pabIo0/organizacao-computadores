@@ -32,6 +32,11 @@ typedef struct sai {
   int quantidade, capacidade;
 } lista_saidas;
 
+typedef enum {
+    ASSEMBLY,
+    BINARIO
+} Tipo;
+
 extern uint32_t registradores[N_REGISTRADORES];
 
 /*
@@ -77,6 +82,11 @@ como por exemplo, o cod assembly, cod binário, tipo de instrução... entrada:
 referência para lista de entrada l saída: não tem
 */
 void exibir_lista(lista_entradas *l);
+
+/*
+Função responsável por exibir o código assembly e sua versão em binário 
+*/
+void exibir_informacao(void *lista, int i, Tipo tipo);
 
 /*
 Função responsável por chamar todas as funções do simulador de processador que
@@ -272,13 +282,6 @@ entrada: referência para lista de entradas l, inteiro i
 saída: não tem
 */
 void formato_R(lista_entradas *l, int i);
-
-/*
-Função responsável por processar o formato I da instrução
-entrada: referência para lista de entradas l, inteiro i
-saída: não tem
-*/
-void formato_I(lista_entradas *l, int i);
 
 /*
 Função responsável por imprimir as mudanças de memória
